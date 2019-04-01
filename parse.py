@@ -23,8 +23,21 @@ def parse_league_link():
     for link in result:
         game = re.search(r'Dota 2', link)
         if game:
-            links.append(re.search(r'href="(.*?)"', result[0]).group(1))
+            links.append(re.search(r'href=" /su/live/(.*?)"', result[0]).group(1))
     print(links)
+    return links
 
 
-parse_league_link()
+def matchs_links(league_id):
+    link = "https://www.marathonbet.com/su/live/" + league_id
+    response = requests.get(link)
+    html = response.text
+    result = re.findall(r'(?sm)<table class="member-area-content-table  "(.*?)</table>', html)
+    match_ids = []
+    for id in result:
+        match_ids.append(re.search(r'<div data-favorites-selector="(.*?)"',id).group(1))
+    print(match_ids)
+
+
+links = parse_league_link()
+matchs_links(links[0])
