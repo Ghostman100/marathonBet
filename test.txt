@@ -1,7 +1,7 @@
 https://lu.marathonbet.com/su/liveupdate/7945347?callback=jQuery1102007916632526346312_1554104226137&markets=7945347&expandedIds=1372932%2C6098679&expandedPopularIds=&updated=1554104511537&oddsType=Decimal&siteStyle=MULTIMARKETS&region=DE&_=1554104226309
 https://lu.marathonbet.com/su/liveupdate/7945347?callback=jQuery1102007916632526346312_1554104226137&markets=7945347&expandedIds=1372932%2C6098679&expandedPopularIds=&updated=1554104267891&oddsType=Decimal&siteStyle=MULTIMARKETS&region=DE&_=1554104226165
 
-https://lu.marathonbet.com/su/liveupdate/7946048?markets=7946048&updated=1554120127229&oddsType=Decimal&region=DE&_=1554105128275&oddsType=Decimal&siteStyle=MULTIMARKETS&region=DE&_=1554119000873
+https://lu.marathonbet.com/su/liveupdate/7947575?markets=7947575&updated=1554120127229&oddsType=Decimal
 
 
 ch: {"sn":"Vici Gaming (победа)","mn":"Результат, 2-я карта","ewc":"1/1 1","cid":32234005072,"prt":"CP","ewf":"1.0","epr":"1.4444444444444444","prices":{"0":"4/9","1":"1.444","2":"-225","3":"0.444","4":"0.444","5":"-2.25"},"mid":"7082097","u":"7082097,{0}_Map_Result0.RN_H","en":"Vici Gaming - Royal Club","l":true}
@@ -53,3 +53,23 @@ result: "LIVE_DELAY"
 selectionuids: ["7082097,{0}_Map_Result0.RN_H"]
 sessionExpire: 7175274
 ticket_id: "0c1fd505-7f3d-40c8-8086-6134f2f432ee"
+
+
+
+
+
+
+
+
+
+
+placetiket
+
+
+Request URL: https://www.marathonbet.com/su/betslip/placeticket2.htm
+
+t: bbc5b3f2-0f06-40b0-be3c-bf65cf80566c
+
+
+
+
