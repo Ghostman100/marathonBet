@@ -36,8 +36,8 @@ class Game:
 
 def login():
     print('Введи пароль')
-    # password = input()
-    password = 'qweasdzxc123'
+    password = input()
+    # password = 'qweasdzxc123'
     payload = {'login': 'NatashaBet', 'login_password': password,
                'loginUrl': 'https://www.marathonbet.com:443/su/login.htm'}
     response = requests.post("https://www.marathonbet.com/su/login.htm", data=payload)
