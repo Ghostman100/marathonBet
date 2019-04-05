@@ -1,6 +1,37 @@
 import requests
 import re
 import json
+from time import sleep
+
+
+class Game:
+    def __init__(self, match_id, first_team, second_team):
+        self.match_id = match_id
+        self.first_team = first_team
+        self.second_team = second_team
+
+    def print(self):
+        print(self.match_id)
+        print(self.first_team + "-" + self.second_team)
+
+    def parse(self):
+        link = "https://lu.marathonbet.ru/su/liveupdate/" + self.match_id
+        params = {
+            'markets': self.match_id,
+            'updated': '1554120127229',
+            'oddsType': 'Decimal'
+        }
+        c = 10
+        while (c > 5):
+            response = requests.get(link, params=params)
+            text = json.loads(response.text)
+            updated = text['updated']
+            print(updated)
+            print()
+            if 'modified' in text:
+                print(text['modified'])
+            params['updated'] = updated
+            sleep(5)
 
 
 def login():
@@ -48,31 +79,38 @@ def add_bet(cookie):
     print(response.text)
     bet(cookie)
 
-    def parse_league_link():
-        response = requests.get("https://www.marathonbet.com/su/live/1372932")
-        html = response.text
-        result = re.findall(r'(?sm)<a class="category-label-link"(.+?)</a>', html)
-        links = []
-        for link in result:
-            game = re.search(r'Dota 2', link)
-            if game:
-                links.append(re.search(r'href=" /su/live/(.*?)"', result[0]).group(1))
-        print(links)
-        return links
 
-    def matches_links(league_id):
-        link = "https://www.marathonbet.com/su/live/" + league_id
-        response = requests.get(link)
-        html = response.text
-        result = re.findall(r'(?sm)<table class="member-area-content-table  "(.*?)</table>', html)
-        match_ids = []
-        for id in result:
-            match_ids.append(re.search(r'<div data-favorites-selector="(.*?)"', id).group(1))
-        print(match_ids)
-
-    # links = parse_league_link()
-    # matches_links(links[0])
+def parse_league_link():
+    response = requests.get("https://www.marathonbet.ru/su/live/1372932")
+    html = response.text
+    result = re.findall(r'(?sm)<a class="category-label-link"(.+?)</a>', html)
+    links = []
+    i = 0
+    for link in result:
+        game = re.search(r'CS:GO', link)
+        if game:
+            links.append(re.search(r'href=" /su/live/(.*?)"', result[i]).group(1))
+        i += 1
+    print(links)
+    return links
 
 
-cook = login()
-add_bet(cook)
+def matches_links(league_id):
+    link = "https://www.marathonbet.ru/su/live/" + league_id
+    response = requests.get(link)
+    html = response.text
+    result = re.findall(r'(?sm)<table class="member-area-content-table  "(.*?)</table>', html)
+    for match in result:
+        id = re.search(r'<div data-favorites-selector="(.*?)"', match).group(1)
+        teams = re.findall(r'<span>(.*?)<\/span>', match)
+        mat = Game(id, teams[0], teams[1])
+        mat.print()
+        mat.parse()
+
+
+links = parse_league_link()
+matches_links(links[0])
+
+
+# cook = login()
+# add_bet(cook)
